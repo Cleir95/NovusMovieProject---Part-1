@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 @ViewScoped
 @Named("bean")
 
-// constructor
+// constructor sjjfskjfsklj
 public class Beans extends BaseBean implements Serializable{
     // isntance of the class MovieBusinessLayer
     private MovieBusinessLayer mbl = new MovieBusinessLayer();
