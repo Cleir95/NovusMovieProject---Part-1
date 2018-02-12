@@ -30,7 +30,7 @@ public class Beans extends BaseBean implements Serializable{
     private boolean isSubmitted = false, isAllSelected = false;
     //dsfkiashfjksjshfhsdfhufijflsdjlskjfsjisgdhdjflakfflhsklfhskafhakhfakhfkhk kfskfkljfvsjfjfjkjfkygfjekdfjsdhjnak
     
-    // annotation -
+    // annotation -eweqweq
     @PostConstruct
     protected void load(){
         if (this.isPostback()){
