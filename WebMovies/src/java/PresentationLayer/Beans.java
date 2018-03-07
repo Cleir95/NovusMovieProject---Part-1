@@ -18,22 +18,21 @@ import javax.servlet.http.HttpServletRequest;
 @ViewScoped
 @Named("bean")
 
-// constructor sjjfskjfsklj
+
 public class Beans extends BaseBean implements Serializable{
-    // isntance of the class MovieBusinessLayer
-    private MovieBusinessLayer mbl = new MovieBusinessLayer();
+    
+    private MovieBusinessLayer mbl = new MovieBusinessLayer(); // isntance of the class MovieBusinessLayer
     private String selectedFilm, selectedDirector, selectedActor, selectedYear, selectedRating;
     List<Director> directors;
     List<Actor> actors;
     List<SimplisticFilm> sFilms;
     List<String> filmYears, filmRatings;
     private boolean isSubmitted = false, isAllSelected = false;
-    //dsfkiashfjksjshfhsdfhufijflsdjlskjfsjisgdhdjflakfflhsklfhskafhakhfakhfkhk kfskfkljfvsjfjfjkjfkygfjekdfjsdhjnak
-    
-    // annotation -eweqweq
+    //
+    // annotation 
     @PostConstruct
     protected void load(){
-        if (this.isPostback()){
+        if (this.isPostback()){ // postback orginates if the user clickes(dropdown, button, etc)
             String filmID = (selectedFilm == null ? null : selectedFilm);
             String directorID = (selectedDirector == null ? null : selectedDirector);
             String actorID = (selectedActor == null ? null : selectedActor);

@@ -13,13 +13,17 @@ public class MovieData {
     
     //read data from CSV file - path provided as param
     public Films getFilmData(String csvPath){
-        Films films = new Films();
-        String[] line;
         
+        Films films = new Films();// creates a new isntance of Film
+       
+        String[] line; // reads string line by line
+        
+        // creates a new csv reader which reades the input file 
         try(CSVReader csv = new CSVReader(new FileReader(csvPath));){
             String[] headers = csv.readNext(); //read first line for header strings
            
-            while((line = csv.readNext()) != null){
+            while((line = csv.readNext()) != null){ 
+                
                 films = storeLine(line, films);
             }
         }catch(IOException ex){

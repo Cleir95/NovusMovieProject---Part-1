@@ -12,6 +12,8 @@ public class MovieBusinessLayer {
     
      
     public Films getFilms(){
+        
+      // creates new movieData instance and uses its method to read the csv file
        Films films = new MovieData().getFilmData(AppVariables.CSV.EXTENDED_FILE_PATH);
         return films;
     }
