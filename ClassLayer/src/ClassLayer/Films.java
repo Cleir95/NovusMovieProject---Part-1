@@ -42,7 +42,7 @@ public class Films extends ArrayList<Film>{
     
     public List<Director> toListDistinctDirector(){
         List <Director> tmpList = new ArrayList();
-            
+        //combine the streams, directors into streams. filter the
         this.stream().flatMap(film -> film.directors.stream()
                     .filter(dir -> tmpList.stream()
                             .noneMatch(di -> di.getID().equals(dir.getID())))
@@ -74,6 +74,7 @@ public class Films extends ArrayList<Film>{
                     .filter(act -> tmpList.stream()
                             .noneMatch(ac -> ac.getID().equals(act.getID())))
                     .map(nAct -> tmpList.add(nAct)))
+                
                     .collect(Collectors.toList());
 
         tmpList.sort(Comparator.comparing(c -> c.getName()));
