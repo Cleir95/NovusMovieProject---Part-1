@@ -14,7 +14,7 @@ public class Films extends ArrayList<Film>{
         this.addAll(films);
     }
     
-    //returns the movies that match the options
+    //returns the movies which pass through the filter
     public Films getFilmsFilteredSubset(String filmID, String directorID, String actorID, String filmYear, String filmRating){
         Films tmpFilms = new Films();
         tmpFilms.addAll(this.stream().filter(f -> f.filmID.equals((filmID == null) ? f.filmID : filmID)) //checks if there is an filmId filter value, if yes then movies with that id is passed
@@ -45,10 +45,13 @@ public class Films extends ArrayList<Film>{
     
     public List<Director> toListDistinctDirector(){
         List <Director> tmpList = new ArrayList();
-        //combine the streams, directors into streams. filter the
+        //combine the streams, directors into streams. 
         this.stream().flatMap(film -> film.directors.stream()
                     .filter(dir -> tmpList.stream()
+                            // checking if there is any dulipcate directors before adding them 
+             
                             .noneMatch(di -> di.getID().equals(dir.getID())))
+                //Add those distinct directors to tmpList
                     .map(nDir -> tmpList.add(nDir)))
                     .collect(Collectors.toList());
 
