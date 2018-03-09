@@ -33,14 +33,14 @@ public class Beans extends BaseBean implements Serializable{
     @PostConstruct
     protected void load(){
         if (this.isPostback()){ // postback orginates if the user clickes(dropdown, button, etc)
-            String filmID = (selectedFilm == null ? null : selectedFilm);
+            String filmID = (selectedFilm == null ? null : selectedFilm); // set the filmID to selectedFilm
             String directorID = (selectedDirector == null ? null : selectedDirector);
             String actorID = (selectedActor == null ? null : selectedActor);
             String filmYear = (selectedYear == null ? null : selectedYear);
             String filmRating = (selectedRating == null ? null : selectedRating);
 
-            populateDropDownsWithFilteredData(filmID, directorID, actorID, filmYear, filmRating);
-        }else{
+            populateDropDownsWithFilteredData(filmID, directorID, actorID, filmYear, filmRating);// put  the selected values in table
+        }else{ // if no postback then,
             populateDropDownsWithOriginalData();
         }
     }
@@ -62,7 +62,7 @@ public class Beans extends BaseBean implements Serializable{
     
     //populate dropdown based on filters currently in place
     private void populateDropDownsWithFilteredData(String filmID, String directorID, String actorID, String filmYear, String filmRating){
-        Films films = mbl.getFilms(); 
+        Films films = mbl.getFilms();  // get all movies 
             
         Films tmp = mbl.getFilmsSubset(filmID, directorID, actorID, filmYear, filmRating, films);
 

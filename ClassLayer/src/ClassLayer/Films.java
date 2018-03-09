@@ -14,26 +14,29 @@ public class Films extends ArrayList<Film>{
         this.addAll(films);
     }
     
-    
+    //returns the movies that match the options
     public Films getFilmsFilteredSubset(String filmID, String directorID, String actorID, String filmYear, String filmRating){
         Films tmpFilms = new Films();
-        tmpFilms.addAll(this.stream().filter(f -> f.filmID.equals((filmID == null) ? f.filmID : filmID)) 
+        tmpFilms.addAll(this.stream().filter(f -> f.filmID.equals((filmID == null) ? f.filmID : filmID)) //checks if there is an filmId filter value, if yes then movies with that id is passed
                                      .filter(f -> f.filmYear.equals((filmYear == null) ? f.filmYear : filmYear))
                                      .filter(f -> f.imdbRating.equals((filmRating == null) ? f.imdbRating : filmRating))
-                                     .filter(f -> f.directors.stream().anyMatch(p -> p.getID().equals((directorID == null) ? p.getID() : directorID)))
-                                     .filter(f -> f.actors.stream().anyMatch(p -> p.getID().equals((actorID == null) ? p.getID() : actorID)))
-                                     .sorted(Comparator.comparing(f -> f.getFilmName()))
-                                     .collect(Collectors.toList()));
-        return tmpFilms;
+                                     .filter(f -> f.directors.stream().anyMatch(p -> p.getID().equals((directorID == null) ? p.getID() : directorID)))//checks if any director ID matches then pass the filter
+                                     .filter(f -> f.actors.stream().anyMatch(p -> p.getID().equals((actorID == null) ? p.getID() : actorID)))//checks if any actors ID matches then pass the filter
+                                     .sorted(Comparator.comparing(f -> f.getFilmName())) //sort the movies by their names
+                                     .collect(Collectors.toList())); // convert to list
+        return tmpFilms;  //return the list.
     }
+  
     
     
+    // sorts (this) by film name and convets it to a list 
     public List<SimplisticFilm> toListSimplisticFilm(){
         return this.stream().sorted(Comparator.comparing(fi -> fi.getFilmName()))
                             .collect(Collectors.toList());
-        
     }
     
+    
+    // filters the film with same filmID in (this) and returns lsit of SimplicFilms
     public List<SimplisticFilm> getDistinctSimplisticFilm(String filmID){
         return this.stream().filter(f -> f.filmID.equals(filmID))
                             .collect(Collectors.toList());
@@ -59,8 +62,9 @@ public class Films extends ArrayList<Film>{
 
         this.stream().flatMap(film -> film.directors.stream()
                     .filter(dir -> tmpList.stream()
-                            .noneMatch(di -> di.getID().equals(dir.getID())) && dir.getID().equals(directorID))
-                    .map(nDir -> tmpList.add(nDir)))
+                    
+                            .noneMatch(di -> di.getID().equals(dir.getID())) && dir.getID().equals(directorID))   //checks if there is any duplicate directors
+                    .map(nDir -> tmpList.add(nDir))) 
                     .collect(Collectors.toList());
 
         return tmpList;  
@@ -77,7 +81,7 @@ public class Films extends ArrayList<Film>{
                 
                     .collect(Collectors.toList());
 
-        tmpList.sort(Comparator.comparing(c -> c.getName()));
+        tmpList.sort(Comparator.comparing(c -> c.getName())); // sort by Actor name
 
         return tmpList;   
     }

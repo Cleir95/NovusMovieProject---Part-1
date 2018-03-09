@@ -13,7 +13,8 @@ public abstract class BaseBean {
     
    
     protected <T>List populateDropDownList(List<T> dataSource){
-        List<SelectItem> siList = new ArrayList();  // create new list of selectItem w
+        List<SelectItem> siList = new ArrayList();  // create new list of selectItem 
+        
          
         //if the dataSource file size is > 1 then,  a SelectItem with value null and label of dropDownDefault
         if(dataSource.size() > 1){
@@ -31,7 +32,7 @@ public abstract class BaseBean {
             siList.addAll(tmpList.stream()
                     // creates new stream corresponding each element to the this stream
                  .map(f -> new SelectItem(f.getFilmID(), f.getFilmName()))
-                 .collect(Collectors.toList()));
+                 .collect(Collectors.toList()));// put the selected item into a list
             
         }else if(dataSource != null && dataSource.get(0) instanceof Person){
             List<Person> tmpList = (List<Person>)dataSource;
@@ -46,7 +47,7 @@ public abstract class BaseBean {
                 .collect(Collectors.toList());
         }
         
-        return siList;
+        return siList; // return the selecteditem List
     }
     
 }

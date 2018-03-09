@@ -10,8 +10,8 @@ public class SimplisticFilm{
         this.filmName = filmName;
     }
     
-    
-    public boolean isValid(){
+    //method checks if the filmid and film name is empty
+    public boolean isValid(){ 
         if(this.filmID == null || this.filmID.isEmpty()){
             return false;
         }else if(this.filmName == null || this.filmName.isEmpty()){
