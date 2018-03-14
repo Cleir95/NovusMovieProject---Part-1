@@ -1,5 +1,5 @@
 package ClassLayer;
-
+import ApplicationVariables.AppVariables;
 
 public class SimplisticFilm{
     public String filmID, filmName;
@@ -25,4 +25,5 @@ public class SimplisticFilm{
     public String getFilmName(){return filmName;}
     public void setFilmID(String filmID){this.filmID = filmID;}
     public void setFilmName(String filmName){this.filmName = filmName;}
+    public String getFilmImdbLink() {return String.format(AppVariables.WebProperties.imdbFilmURL, filmID);}
 }

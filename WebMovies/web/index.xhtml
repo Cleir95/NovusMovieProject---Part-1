@@ -16,15 +16,32 @@
                               onchange="submit()" valueChangeListener="#{bean.filmValueChanged}">
                     <f:selectItems value="#{bean.films}" />
                 </h:selectOneMenu>
+                    
+                    Directors:<h:selectOneMenu style="width:230px;" value="#{bean.selectedDirector}" 
+                              onchange="submit()" valueChangeListener="#{bean.directorValueChanged}">
+                    <f:selectItems value="#{bean.directors}" />
+                    </h:selectOneMenu>
+                
+                  Actor:<h:selectOneMenu style="width:230px;" value="#{bean.selectedActor}" 
+                              onchange="submit()" valueChangeListener="#{bean.actorValueChanged}">
+                    <f:selectItems value="#{bean.actors}" />
+                </h:selectOneMenu>
+                   
+                    
+                    
+                    
                 
                 <h:commandButton value="Reset" class="button" action="#{bean.reset}" />
        <!--disabled ="true"-->
                 </p>
        <!--rendered="bean.isAllSelected"-->
         </h:form> 
+       
+        
         
         <!--bean.isSubmitted-->
         <h:dataTable rendered="#{bean.isAllSelected}" class="tftable" value="Film" var="item" border="1">
+            <!--  <h:dataTable class="tftable" value="#{bean.tableFilms}" var="film" border="1"> -->
             <f:facet name="header">Selected Film</f:facet>
             <h:column>
               <f:facet name="header">Film ID</f:facet>
@@ -59,6 +76,12 @@
                 <h:outputLink value="#{bean.actorImdbLink}"><h:outputText value="#{bean.actor.name}" /></h:outputLink>
             </h:column>
         </h:dataTable>
+        
+     
+        
+        
+        
+        
     </h:body>
 </html>
 

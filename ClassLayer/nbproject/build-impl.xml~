@@ -903,31 +903,18 @@ is divided into following sections:
         <propertyfile file="${built-jar.properties}">
             <entry key="${basedir}" value=""/>
         </propertyfile>
-        <antcall target="-maybe-call-dep">
-            <param name="call.built.properties" value="${built-jar.properties}"/>
-            <param location="${project.ApplicationVariables}" name="call.subproject"/>
-            <param location="${project.ApplicationVariables}/build.xml" name="call.script"/>
-            <param name="call.target" value="jar"/>
-            <param name="transfer.built-jar.properties" value="${built-jar.properties}"/>
-            <param name="transfer.not.archive.disabled" value="true"/>
-        </antcall>
-        <antcall target="-maybe-call-dep">
-            <param name="call.built.properties" value="${built-jar.properties}"/>
-            <param location="${project.BusinessLayer}" name="call.subproject"/>
-            <param location="${project.BusinessLayer}/build.xml" name="call.script"/>
-            <param name="call.target" value="jar"/>
-            <param name="transfer.built-jar.properties" value="${built-jar.properties}"/>
-            <param name="transfer.not.archive.disabled" value="true"/>
-        </antcall>
-        <antcall target="-maybe-call-dep">
-            <param name="call.built.properties" value="${built-jar.properties}"/>
-            <param location="${project.DataLayer}" name="call.subproject"/>
-            <param location="${project.DataLayer}/build.xml" name="call.script"/>
-            <param name="call.target" value="jar"/>
-            <param name="transfer.built-jar.properties" value="${built-jar.properties}"/>
-            <param name="transfer.not.archive.disabled" value="true"/>
-        </antcall>
     </target>
+    
+        <antcall target="-maybe-call-dep">
++            <param name="call.built.properties" value="${built-jar.properties}"/>
++            <param location="${project.ApplicationVariables}" name="call.subproject"/>
++            <param location="${project.ApplicationVariables}/build.xml" name="call.script"/>
++            <param name="call.target" value="jar"/>
++            <param name="transfer.built-jar.properties" value="${built-jar.properties}"/>
++            <param name="transfer.not.archive.disabled" value="true"/>
++        </antcall>
+    
+    
     <target depends="init,-check-automatic-build,-clean-after-automatic-build" name="-verify-automatic-build"/>
     <target depends="init" name="-check-automatic-build">
         <available file="${build.classes.dir}/.netbeans_automatic_build" property="netbeans.automatic.build"/>
@@ -1412,30 +1399,15 @@ is divided into following sections:
         <propertyfile file="${built-clean.properties}">
             <entry key="${basedir}" value=""/>
         </propertyfile>
+        
         <antcall target="-maybe-call-dep">
-            <param name="call.built.properties" value="${built-clean.properties}"/>
-            <param location="${project.ApplicationVariables}" name="call.subproject"/>
-            <param location="${project.ApplicationVariables}/build.xml" name="call.script"/>
-            <param name="call.target" value="clean"/>
-            <param name="transfer.built-clean.properties" value="${built-clean.properties}"/>
-            <param name="transfer.not.archive.disabled" value="true"/>
-        </antcall>
-        <antcall target="-maybe-call-dep">
-            <param name="call.built.properties" value="${built-clean.properties}"/>
-            <param location="${project.BusinessLayer}" name="call.subproject"/>
-            <param location="${project.BusinessLayer}/build.xml" name="call.script"/>
-            <param name="call.target" value="clean"/>
-            <param name="transfer.built-clean.properties" value="${built-clean.properties}"/>
-            <param name="transfer.not.archive.disabled" value="true"/>
-        </antcall>
-        <antcall target="-maybe-call-dep">
-            <param name="call.built.properties" value="${built-clean.properties}"/>
-            <param location="${project.DataLayer}" name="call.subproject"/>
-            <param location="${project.DataLayer}/build.xml" name="call.script"/>
-            <param name="call.target" value="clean"/>
-            <param name="transfer.built-clean.properties" value="${built-clean.properties}"/>
-            <param name="transfer.not.archive.disabled" value="true"/>
-        </antcall>
++            <param name="call.built.properties" value="${built-clean.properties}"/>
++            <param location="${project.ApplicationVariables}" name="call.subproject"/>
++            <param location="${project.ApplicationVariables}/build.xml" name="call.script"/>
++            <param name="call.target" value="clean"/>
++            <param name="transfer.built-clean.properties" value="${built-clean.properties}"/>
++            <param name="transfer.not.archive.disabled" value="true"/>
++        </antcall>
     </target>
     <target depends="init" name="-do-clean">
         <delete dir="${build.dir}"/>

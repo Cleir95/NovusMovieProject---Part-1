@@ -1,4 +1,5 @@
 package ClassLayer;
+import ApplicationVariables.AppVariables;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,4 +49,5 @@ public class Film extends SimplisticFilm {
     public void setFilmYear(String filmYear){this.filmYear = filmYear;}
     public void setDirectorList(List<Director> directors){this.directors = directors;}
     public void setActorList(List<Actor> actors){this.actors = actors;}
+    public Director getDirector() { return directors.get(0);}
 }
